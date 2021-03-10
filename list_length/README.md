@@ -1,3 +1,3 @@
-# ListFilter
+# ListLength
 
-Entrega do segundo desafio: "Desafio 02 - Filtragem em listas"
+Entrega do primeiro desafio: "Desafio 01 - Utilizando recursão"
