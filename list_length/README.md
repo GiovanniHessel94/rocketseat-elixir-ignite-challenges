@@ -1,3 +1,3 @@
 # ListLength
 
-Entrega do primeiro desafio: "Desafio 01 - Utilizando recursão"
+Delivery of the first challenge: "Desafio 01 - Utilizando recursão"

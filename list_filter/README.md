@@ -1,3 +1,3 @@
 # ListFilter
 
-Entrega do segundo desafio: "Desafio 02 - Filtragem em listas"
+Delivery of the second challenge: "Desafio 02 - Filtragem em listas"

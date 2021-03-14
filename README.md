@@ -1,3 +1,3 @@
-# Ignite Projects
+# Ignite Challenges
 
-This repository will be used to display all the projects that will be developed in the Rocketseat Ignite - Elixir
+This repository will be used to display all the challenges that will be developed in the Rocketseat Ignite - Elixir
