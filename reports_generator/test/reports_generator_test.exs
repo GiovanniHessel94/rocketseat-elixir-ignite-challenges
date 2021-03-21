@@ -5,9 +5,7 @@ defmodule ReportsGeneratorTest do
     test "when filename is correct, returns the report" do
       filename = "data_test"
 
-      response =
-        filename
-        |> ReportsGenerator.build()
+      response = ReportsGenerator.build(filename)
 
       expected_response = %{
         all_hours: %{
@@ -79,9 +77,7 @@ defmodule ReportsGeneratorTest do
     test "when filename is not a string, returns an error" do
       filename = true
 
-      response =
-        filename
-        |> ReportsGenerator.build()
+      response = ReportsGenerator.build(filename)
 
       expected_response = {:error, "Please provide a file name as string"}
 

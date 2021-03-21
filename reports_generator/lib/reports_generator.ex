@@ -29,9 +29,7 @@ defmodule ReportsGenerator do
 
   defp aggregate_line([name, worked_hours, _day, month, year], report) do
     all = sum_hours(report.all_hours, name, worked_hours)
-
     per_month = sum_hours(report.hours_per_month, name, elem(@months, month - 1), worked_hours)
-
     per_year = sum_hours(report.hours_per_year, name, year, worked_hours)
 
     %{all_hours: all, hours_per_month: per_month, hours_per_year: per_year}
