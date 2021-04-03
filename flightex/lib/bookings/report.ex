@@ -1,6 +1,4 @@
 defmodule Flightex.Bookings.Report do
-  import NaiveDateTime
-
   alias Flightex.Bookings.Agent, as: BookingAgent
   alias Flightex.Bookings.Booking
 
@@ -13,20 +11,25 @@ defmodule Flightex.Bookings.Report do
       |> Stream.filter(&booking_in_range(&1, from_date, to_date))
       |> Enum.reduce("", &booking_string/2)
       |> save_report()
-    else
-      :error -> {:error, "Please provide both dates as ISO8601 formated strings"}
     end
   end
 
   def generate(_from_date, _to_date) do
-    {:error, "Please provide both dates as ISO8601 formated strings"}
+    {:error, "Please provide both dates as ISO8601 datetime strings"}
   end
 
   defp get_booking({_id, %Booking{} = booking}), do: booking
 
+  defp from_iso8601(date_string) do
+    case NaiveDateTime.from_iso8601(date_string) do
+      {:error, _reason} -> {:error, "Date must be an ISO8601 datetime string"}
+      {:ok, date} -> {:ok, date}
+    end
+  end
+
   defp booking_in_range(%Booking{data_completa: data_completa}, from_date, to_date) do
-    compare(data_completa, from_date) in [:eq, :gt] and
-      compare(data_completa, to_date) in [:eq, :lt]
+    NaiveDateTime.compare(data_completa, from_date) in [:eq, :gt] and
+      NaiveDateTime.compare(data_completa, to_date) in [:eq, :lt]
   end
 
   defp booking_string(

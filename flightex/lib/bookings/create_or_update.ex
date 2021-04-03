@@ -12,7 +12,7 @@ defmodule Flightex.Bookings.CreateOrUpdate do
     booking_id = UUID.uuid4()
 
     with {:ok, _user} <- UserAgent.get(user_id),
-         {:ok, data_completa} <- NaiveDateTime.from_iso8601(data_completa_string),
+         {:ok, data_completa} <- from_iso8601(data_completa_string),
          {:ok, booking} <-
            Booking.build(booking_id, data_completa, cidade_origem, cidade_destino, user_id) do
       BookingAgent.save(booking)
@@ -21,5 +21,12 @@ defmodule Flightex.Bookings.CreateOrUpdate do
     end
   end
 
-  def call(_params), do: {:error, "Invalid parameters"}
+  def call(_user_id, _booking_params), do: {:error, "Invalid parameters"}
+
+  defp from_iso8601(date_string) do
+    case NaiveDateTime.from_iso8601(date_string) do
+      {:error, _reason} -> {:error, "Date must be an ISO8601 datetime string"}
+      {:ok, date} -> {:ok, date}
+    end
+  end
 end

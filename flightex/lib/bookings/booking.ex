@@ -17,6 +17,7 @@ defmodule Flightex.Bookings.Booking do
      }}
   end
 
-  def build(_id, _data_completa, _cidade_origem, _cidade_destino, _user_id),
-    do: {:error, "Invalid parameters"}
+  def build(_id, _data_completa, _cidade_origem, _cidade_destino, _user_id) do
+    {:error, "Invalid parameters"}
+  end
 end
