@@ -31,4 +31,13 @@ defmodule MealsMonitorWeb.MealsView do
       }
     }
   end
+
+  def render("all.json", %{meals: meals}) do
+    %{
+      success: true,
+      data: %{
+        meals: meals
+      }
+    }
+  end
 end

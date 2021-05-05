@@ -22,6 +22,14 @@ defmodule MealsMonitorWeb.MealsController do
     end
   end
 
+  def show_by_user(conn, %{"id" => user_id}) do
+    with {:ok, meals} <- MealsMonitor.get_meal_by_user_id(user_id) do
+      conn
+      |> put_status(:ok)
+      |> render("all.json", meals: meals)
+    end
+  end
+
   def update(conn, params) do
     with {:ok, %Meal{} = meal} <- MealsMonitor.update_meal(params) do
       conn

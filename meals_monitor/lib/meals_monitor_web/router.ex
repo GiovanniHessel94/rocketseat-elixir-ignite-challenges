@@ -11,7 +11,11 @@ defmodule MealsMonitorWeb.Router do
   scope "/api", MealsMonitorWeb do
     pipe_through :api
 
+    resources "/users", UsersController, only: [:create, :show]
+
     resources "/meals", MealsController, except: [:new, :edit]
+
+    get "/meals/user/:id", MealsController, :show_by_user
   end
 
   # Enables LiveDashboard only for development
