@@ -29,6 +29,17 @@ config :phoenix, :json_library, Jason
 # Configures the tesla's adapter
 config :tesla, adapter: Tesla.Adapter.Hackney
 
+config :github_integration, GithubIntegration.Repo,
+  migration_primary_key: [name: :id, type: :binary_id]
+
+config :github_integration, GithubIntegrationWeb.Auth.Guardian,
+  issuer: "github_integration",
+  secret_key: "NPzUi5C5Ax1JKwefdnrlOrX9HNLGXr36S61kyr9qJUL2Q7BHw0zd+62cRkfX207t"
+
+config :github_integration, GithubIntegrationWeb.Auth.Pipeline,
+  module: GithubIntegrationWeb.Auth.Guardian,
+  error_handler: GithubIntegrationWeb.Auth.ErrorHandler
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

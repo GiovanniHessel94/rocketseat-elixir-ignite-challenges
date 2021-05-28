@@ -1,12 +1,28 @@
 defmodule GithubIntegrationWeb.Router do
   use GithubIntegrationWeb, :router
 
+  alias GithubIntegrationWeb.Auth.Pipeline
+
+  alias GithubIntegrationWeb.Plugs.UUIDChecker
+
   pipeline :api do
     plug :accepts, ["json"]
+    plug UUIDChecker
+  end
+
+  pipeline :auth do
+    plug Pipeline
   end
 
   scope "/api", GithubIntegrationWeb do
     pipe_through :api
+
+    post "/users", UsersController, :create
+    post "/users/login", UsersController, :login
+  end
+
+  scope "/api", GithubIntegrationWeb do
+    pipe_through :auth
 
     get "/users/:username/repos", RepositoriesController, :get_user_repos
   end

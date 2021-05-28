@@ -54,7 +54,9 @@ defmodule GithubIntegration.MixProject do
       {:excoveralls, "~> 0.10", only: :test},
       {:tesla, "~> 1.4.0"},
       {:hackney, "~> 1.17.0"},
-      {:bypass, "~> 2.1", only: :test}
+      {:bypass, "~> 2.1", only: :test},
+      {:guardian, "~> 2.0"},
+      {:pbkdf2_elixir, "~> 1.4"}
     ]
   end
 
