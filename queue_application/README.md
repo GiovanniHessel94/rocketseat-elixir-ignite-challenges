@@ -1,3 +1,3 @@
 # QueueApplication
 
-Delivery of the eighth module challenge: "Desafio 01 - Queue"
+Delivery of the eighth module challenge: "Desafio 01 - Filas"
