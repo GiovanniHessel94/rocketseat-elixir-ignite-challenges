@@ -18,7 +18,7 @@ defmodule ReportsGeneratorParallelism do
 
   def build_from_many(filenames) when is_list(filenames) do
     filenames
-    |> Task.async_stream(fn filename -> build(filename) end)
+    |> Task.async_stream(&build/1)
     |> Enum.reduce(report_acc(), fn {:ok, report}, reports ->
       aggregate_reports(report, reports)
     end)
@@ -74,8 +74,9 @@ defmodule ReportsGeneratorParallelism do
     build_report(all, per_month, per_year)
   end
 
-  defp build_report(all_hours, hours_per_month, hours_per_year),
-    do: %{all_hours: all_hours, hours_per_month: hours_per_month, hours_per_year: hours_per_year}
+  defp build_report(all_hours, hours_per_month, hours_per_year) do
+    %{all_hours: all_hours, hours_per_month: hours_per_month, hours_per_year: hours_per_year}
+  end
 
   defp sum_hours(map, key, worked_hours) do
     {_, result} =

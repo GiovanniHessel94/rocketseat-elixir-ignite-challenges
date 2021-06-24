@@ -3,7 +3,7 @@ defmodule ReportsGenerator.Parser do
     result =
       "reports/#{filename}.csv"
       |> File.stream!()
-      |> Stream.map(fn line -> parse_line(line) end)
+      |> Stream.map(&parse_line/1)
 
     {:ok, result}
   end

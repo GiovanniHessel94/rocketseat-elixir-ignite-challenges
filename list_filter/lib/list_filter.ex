@@ -1,13 +1,15 @@
 defmodule ListFilter do
   def call(list) do
-    parse_integers(list)
+    list
+    |> parse_integers()
     |> filter_strings()
     |> count_odd()
   end
 
   defp parse_integers(list) do
     Enum.map(list, fn element ->
-      Integer.parse(element)
+      element
+      |> Integer.parse()
       |> handle_parse
     end)
   end
