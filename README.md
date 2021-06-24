@@ -4,7 +4,7 @@ This repository is the codebase of the development made on Elixir Ignite challen
 
 ## Description
 
-In total sixteen challenges were given, of which ten were mandatory(*). At last one challenge had to be made to conclude a module. [Link](https://github.com/GiovanniHessel94/rocketseat-elixir-ignite) to the modules repo.
+In total sixteen challenges were given, of which ten were mandatory(*). At least one challenge had to be made to conclude a module. [Link](https://github.com/GiovanniHessel94/rocketseat-elixir-ignite) to the modules repo.
 
 ### Chapter I
 
